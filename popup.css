@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 380px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0f1419;
+  color: #e7e9ea;
+}
+
+main {
+  padding: 16px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 5px;
+}
+
+.sub {
+  margin: 0 0 14px;
+  color: #8b98a5;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.stats div {
+  background: #16181c;
+  border: 1px solid #2f3336;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.stats strong,
+.stats span {
+  display: block;
+}
+
+.stats strong {
+  font-size: 17px;
+}
+
+.stats span {
+  font-size: 10px;
+  color: #8b98a5;
+  margin-top: 3px;
+}
+
+.card,
+.safety-box,
+.policy {
+  margin-top: 12px;
+  padding: 11px;
+  border: 1px solid #2f3336;
+  border-radius: 12px;
+  background: #16181c;
+}
+
+.danger-card {
+  border-color: #f4212e;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.small,
+.status,
+.policy p {
+  font-size: 11px;
+  line-height: 1.45;
+  color: #8b98a5;
+}
+
+.status {
+  min-height: 32px;
+}
+
+.warning {
+  color: #f7a8ad;
+}
+
+.row,
+.timed-actions {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.timed-actions {
+  grid-template-columns: 1fr 76px;
+}
+
+.timed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+label {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  margin-top: 5px;
+  padding: 9px;
+  background: #0f1419;
+  color: #e7e9ea;
+  border: 1px solid #536471;
+  border-radius: 9px;
+}
+
+button {
+  padding: 9px 10px;
+  border: 1px solid #536471;
+  border-radius: 999px;
+  background: transparent;
+  color: #e7e9ea;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.full {
+  width: 100%;
+}
+
+.primary {
+  background: #1d9bf0;
+  border-color: #1d9bf0;
+  color: white;
+}
+
+.danger {
+  border-color: #f4212e;
+  color: #ff8b94;
+}
+
+.danger-solid {
+  background: #f4212e;
+  border-color: #f4212e;
+  color: white;
+}
+
+.safety-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.meter {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #2f3336;
+  margin-top: 8px;
+}
+
+.meter-fill {
+  height: 100%;
+  width: 0;
+  background: #1d9bf0;
+}
+
+.timed-status {
+  font-weight: 700;
+}
+
+.policy {
+  border-color: #8b98a5;
+}
+

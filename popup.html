@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>X Tweet Cleaner</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>X Tweet Cleaner</h1>
+    <p class="sub">Delete only posts for which X exposes a real Delete option.</p>
+
+    <div class="stats">
+      <div><strong id="scanned">0</strong><span>Loaded posts</span></div>
+      <div><strong id="dailyCount">0 / 200</strong><span>Deleted today</span></div>
+    </div>
+
+    <section class="safety-box">
+      <div class="safety-head">
+        <strong>Daily safety counter</strong>
+        <span id="dailyRemaining">200 left</span>
+      </div>
+      <div class="meter"><div id="dailyMeter" class="meter-fill"></div></div>
+      <p class="small">
+        Local precaution only. X does not publish a guaranteed safe daily delete number.
+      </p>
+    </section>
+
+    <section>
+      <button id="scan" class="primary full">Scan Loaded Posts</button>
+      <p id="status" class="status">Open your X profile and load the posts you want to review.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">Batch Delete</div>
+      <p class="small">Delete up to 1–100 deletable posts currently loaded on the page.</p>
+      <div class="row">
+        <input id="batchCount" type="number" min="1" max="100" value="10">
+        <button id="batchDelete" class="danger">Delete Batch</button>
+      </div>
+    </section>
+
+    <section class="card danger-card">
+      <div class="section-title">Delete All Loaded</div>
+      <p class="small">
+        Delete all deletable posts currently loaded, up to your selected maximum.
+      </p>
+      <div class="row">
+        <input id="allCount" type="number" min="1" max="200" value="50">
+        <button id="deleteAll" class="danger-solid">Delete All Loaded</button>
+      </div>
+      <p class="small warning">
+        Deleted posts are not recoverable. You must type DELETE ALL before this starts.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">Timed Delete</div>
+      <p class="small">Delete 1 deletable loaded post at each interval.</p>
+
+      <div class="timed-grid">
+        <label>
+          Every (minutes)
+          <input id="timedMinutes" type="number" min="1" max="1440" value="5">
+        </label>
+        <label>
+          Total posts
+          <input id="timedTotal" type="number" min="1" max="200" value="20">
+        </label>
+      </div>
+
+      <div class="timed-actions">
+        <button id="timedStart" class="danger">Start Timed Delete</button>
+        <button id="timedStop">Stop</button>
+      </div>
+
+      <p id="timedStatus" class="small timed-status">Stopped.</p>
+      <p class="small warning">
+        Example: 5 minutes + 20 posts = 1 post deletion every 5 minutes. Keep your X profile tab open and loaded.
+      </p>
+    </section>
+
+    <section class="policy">
+      <strong>Important</strong>
+      <p>
+        Deletion is permanent. This extension uses X.com page automation rather than the paid X API.
+        Use at your own risk and review X's current automation rules.
+      </p>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
