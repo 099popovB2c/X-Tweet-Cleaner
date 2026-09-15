@@ -2,6 +2,14 @@
 
 Open-source Chrome extension for reviewing and deleting your own posts on X/Twitter.
 
+## v1.0.1
+
+- Re-queries X's live tweet DOM after every successful deletion instead of continuing with stale article nodes.
+- Adds fallback support for X's `menuButton`/`More` post menu controls.
+- Skips reposts instead of treating them as deletable owned posts.
+- Uses visible-menu/dialog checks and waits for X's confirmation flow more defensively.
+- Adds small randomized delays between successful deletions to reduce UI race conditions.
+
 ## Features
 
 - Scan posts currently loaded on an X profile page.
@@ -36,71 +44,24 @@ This extension automates actions on the X.com website rather than using the paid
 
 ### Batch Delete
 
-Choose a number from 1 to 100 and confirm the irreversible deletion warning. The extension processes only currently loaded posts and checks each post for X's real Delete menu item.
+Choose a number from 1 to 100 and confirm the irreversible deletion warning. The extension processes currently loaded posts and checks each post for X's real Delete menu item. After every deletion it re-reads the live X DOM before selecting the next post.
 
 ### Delete All Loaded
 
-Choose a maximum count and type:
-
-`DELETE ALL`
-
-The extension then attempts to delete every currently loaded post for which X exposes the Delete option, stopping at the selected maximum or the local daily ceiling.
+Choose a maximum count and type `DELETE ALL`. The extension attempts to delete currently loaded posts for which X exposes the Delete option, stopping at the selected maximum or the local daily ceiling.
 
 ### Timed Delete
 
-Example:
-
-- Every: `5 minutes`
-- Total posts: `20`
-
-The extension attempts one deletion every five minutes. The target X profile tab must remain open, and posts must remain loaded.
-
-Type:
-
-`DELETE TIMED`
-
-to start.
+Example: every 5 minutes, total 20 posts. The target X profile tab must remain open and relevant posts must remain loaded. Type `DELETE TIMED` to start.
 
 ## Safety behavior
 
-The extension stops or skips when:
-
-- X does not expose a Delete option for a loaded post;
-- the confirmation dialog cannot be found or verified;
-- the target tab becomes unavailable;
-- Timed Delete finds no deletable loaded post;
-- the local 200/day ceiling is reached;
-- the user presses Stop.
+The extension stops or skips when X does not expose a Delete option, the confirmation dialog cannot be verified, the target tab becomes unavailable, no deletable loaded post is available, the local 200/day ceiling is reached, or the user presses Stop.
 
 ## Privacy
 
-All processing occurs locally in the browser.
-
-The extension does not send usernames, post contents, passwords, cookies, authentication tokens, browsing history, or deletion history to the developer or to an external server.
-
-The only persistent information stored is local extension state such as:
-
-- daily deletion count;
-- Timed Delete state;
-- Timed Delete remaining count and interval.
-
-## Files
-
-- `manifest.json`
-- `content.js`
-- `service-worker.js`
-- `popup.html`
-- `popup.js`
-- `popup.css`
-- `styles.css`
-- `README.md`
-- `LICENSE`
+All processing occurs locally in the browser. The extension does not send usernames, post contents, passwords, cookies, authentication tokens, browsing history, or deletion history to the developer or to an external server.
 
 ## Disclaimer
 
-This project is not affiliated with, endorsed by, or sponsored by X Corp.
-
-X may change its website markup at any time, which can break DOM-based automation.
-
-Use this extension only on your own account and only for posts you are authorized to delete.
-
+This project is not affiliated with, endorsed by, or sponsored by X Corp. X may change its website markup at any time, which can break DOM-based automation. Use this extension only on your own account and only for posts you are authorized to delete.
