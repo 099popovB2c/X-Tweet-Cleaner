@@ -1,17 +1,10 @@
 {
   "manifest_version": 3,
   "name": "X Tweet Cleaner",
-  "version": "1.0.0",
-  "description": "Review and delete your own X posts with single, batch, timed, and delete-all-loaded controls.",
-  "permissions": [
-    "storage",
-    "activeTab",
-    "alarms"
-  ],
-  "host_permissions": [
-    "https://x.com/*",
-    "https://twitter.com/*"
-  ],
+  "version": "1.0.1",
+  "description": "Review and delete your own X posts with live DOM re-querying for more reliable batch and timed cleanup.",
+  "permissions": ["storage", "activeTab", "alarms"],
+  "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "X Tweet Cleaner"
@@ -21,16 +14,9 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://x.com/*",
-        "https://twitter.com/*"
-      ],
-      "js": [
-        "content.js"
-      ],
-      "css": [
-        "styles.css"
-      ],
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content-v101.js"],
+      "css": ["styles.css"],
       "run_at": "document_idle"
     }
   ],
